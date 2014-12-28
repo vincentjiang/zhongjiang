@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'cms/pages#index'
   namespace :cms do
+    root 'pages#index'
     get 'pages/index', as: 'index'
     resources :categories
   end

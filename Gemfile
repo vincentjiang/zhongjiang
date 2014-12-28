@@ -33,6 +33,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'rb-readline'
   gem 'guard', '~> 2.7.3'
+  gem 'guard-unicorn'
   gem 'guard-rails'
   gem 'guard-livereload'
   gem 'spring'
