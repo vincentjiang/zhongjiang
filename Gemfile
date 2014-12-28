@@ -31,13 +31,11 @@ gem 'jbuilder', '~> 2.0'
 group :development do
   gem "better_errors"
   gem 'capistrano-rails'
+  gem 'rb-readline'
   gem 'guard', '~> 2.7.3'
   gem 'guard-rails'
-  gem 'guard-coffeescript'
-  gem 'guard-sass'
   gem 'guard-livereload'
   gem 'spring'
-  gem 'puma'
 end
 
 # 测试环境

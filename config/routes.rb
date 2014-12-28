@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'cms/pages#index'
   namespace :cms do
     get 'pages/index', as: 'index'
+    resources :categories
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

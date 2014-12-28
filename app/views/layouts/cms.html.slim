@@ -14,6 +14,7 @@ html
         .col-sm-3.col-md-2.sidebar
           = render 'cms/layouts/sidebar'
         .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+          = flash_messages(:close)
           == yield
 
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
