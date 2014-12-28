@@ -8,6 +8,7 @@ gem 'devise'
 gem 'rolify'
 gem 'cancancan', '~> 1.9'
 gem 'bcrypt', '~> 3.1.7'
+gem "figaro"
 
 # 前端
 gem 'bootstrap-sass', '~> 3.3.0'
