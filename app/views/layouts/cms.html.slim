@@ -7,8 +7,13 @@ html
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     = stylesheet_link_tag 'application',  media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  body
-
-  == yield
+  body#cms-body
+    = render 'cms/layouts/header'
+    .container-fluid
+      .row
+        .col-sm-3.col-md-2.sidebar
+          = render 'cms/layouts/sidebar'
+        .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+          == yield
 
   = javascript_include_tag 'application', 'data-turbolinks-track' => true

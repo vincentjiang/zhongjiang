@@ -1,0 +1,17 @@
+/.navbar-sidebar
+/  ul.list-unstyled
+/    li
+/      a 公司概况
+/    li
+/      a 产品管理
+/      ul
+/        li
+/          a 产品列表
+/        li
+/          a 添加产品
+/    li
+/      a 网站管理
+
+= tabs_tag namespace: :cms_sidebar, class: "list-unstyled" do |tab|
+  = tab.index '公司概况', cms_index_path
+  = tab.prodcuts '产品管理', cms_index_path
