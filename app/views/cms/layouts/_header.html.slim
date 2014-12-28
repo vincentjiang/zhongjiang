@@ -6,11 +6,11 @@
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand href="/" = ENV["COMPANY_NAME"] 
+      = link_to ENV["COMPANY_NAME"], cms_index_path, class: "navbar-brand"
     .navbar-collapse.collapse
       ul.nav.navbar-nav.navbar-right
         li
-          a style="color:#fff;" UserName
+          a UserName
         li
           a href="#"
             | Logout

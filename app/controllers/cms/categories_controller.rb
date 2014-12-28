@@ -1,6 +1,6 @@
 class Cms::CategoriesController < CmsController
-  set_tab :categories, :cms_sidebar
   before_action :set_category, only: [:edit, :udpate, :destroy]
+
   def index
     @categories = Category.all
   end

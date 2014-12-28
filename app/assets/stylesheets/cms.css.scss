@@ -1,60 +1,41 @@
 body#cms-body {
   padding-top: 50px;
-  /*
-   * Global add-ons
-   */
 
-  .sub-header {
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-  }
-
-  /*
-   * Top navigation
-   * Hide default border to remove 1px line.
-   */
   .navbar-fixed-top {
     border: 0;
   }
 
   /*
-   * Sidebar
+   * Main content
    */
-
-  /* Hide for mobile, show later */
   .sidebar {
-    display: none;
-  }
-  @media (min-width: 768px) {
-    .sidebar {
-      position: fixed;
-      top: 51px;
-      bottom: 0;
-      left: 0;
-      z-index: 1000;
+    min-width: 200px;
+    position: fixed;
+    top: 50px;
+    padding: 20px 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+    a {
       display: block;
-      padding: 20px;
-      overflow-x: hidden;
-      overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-      background-color: #f5f5f5;
-      border-right: 1px solid #eee;
+      text-decoration: none;
+      color: #444;
+      &:hover {
+        background-color: #eee;
+      }
     }
-  }
-
-  /* Sidebar navigation */
-  .nav-sidebar {
-    margin-right: -21px; /* 20px padding + 1px border */
-    margin-bottom: 20px;
-    margin-left: -20px;
-    li > a {
-      padding-right: 20px;
-      padding-left: 20px;
+    .item-l1 > a {
+      padding: 8px 15px;
+      font-size: 18px;
     }
-    li.active > a,
-    li.active > a:hover,
-    li.active > a:focus {
-      color: #fff;
-      background-color: #428bca;
+    .item-l2 a {
+      padding: 8px 30px;
+      font-size: 16px;
     }
   }
 
@@ -65,11 +46,9 @@ body#cms-body {
   .main {
     padding: 20px;
   }
-  @media (min-width: 768px) {
-    .main {
-      padding-right: 40px;
-      padding-left: 40px;
-    }
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
   }
   .main .page-header {
     margin-top: 0;

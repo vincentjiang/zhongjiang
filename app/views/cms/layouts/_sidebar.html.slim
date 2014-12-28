@@ -1,19 +1,20 @@
-/.navbar-sidebar
-/  ul.list-unstyled
-/    li
-/      a 公司概况
-/    li
-/      a 产品管理
-/      ul
-/        li
-/          a 产品列表
-/        li
-/          a 添加产品
-/    li
-/      a 网站管理
+ul.list-unstyled
+  li.item-l1
+    = link_to "公司概况", cms_index_path
+  li.item-l1
+    = link_to "产品管理", cms_index_path
+    ul.list-unstyled.hidden
+      li.item-l2
+        = link_to "产品列表", cms_index_path
+      li.item-l2
+        = link_to "添加产品", cms_index_path
+  li.item-l1
+    = link_to "分类管理", cms_index_path
+  li.item-l1
+    = link_to "网站管理", cms_index_path
 
-= tabs_tag namespace: :cms_sidebar do |tab|
-  = tab.index '公司概况', cms_index_path
-  = tab.prodcuts '产品管理', cms_index_path
-  = tab.categories '产品分类', cms_categories_path
-  = tab.category '网站管理', cms_index_path
+= content_for :javascript_bottom do
+  coffee:
+    $('.item-l1').click ->
+      $(this).children('ul').toggleClass('hidden')
+      return false
