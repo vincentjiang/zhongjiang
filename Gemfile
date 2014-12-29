@@ -42,12 +42,14 @@ end
 # 测试环境
 group :test do
   gem 'capybara'
-  gem 'factory_girl_rails'
   gem 'database_cleaner'
+  gem "launchy"
+  gem "selenium-webdriver"
 end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
 end
