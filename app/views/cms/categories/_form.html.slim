@@ -1,0 +1,9 @@
+= form_for @cms_category do |f|
+  - if @cms_category.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@cms_category.errors.count, "error")} prohibited this cms_category from being saved:"
+      ul
+        - @cms_category.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit

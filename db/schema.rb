@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141228083925) do
+ActiveRecord::Schema.define(version: 20141229164504) do
 
   create_table "zj_categories", force: :cascade do |t|
-    t.string   "name",        limit: 255
+    t.string   "name",        limit: 255, null: false
     t.integer  "category_id", limit: 4
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false

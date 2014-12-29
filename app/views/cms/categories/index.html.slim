@@ -1,0 +1,19 @@
+h1 Listing cms_categories
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @cms_categories.each do |cms_category|
+      tr
+        td = link_to 'Show', cms_category
+        td = link_to 'Edit', edit_cms_category_path(cms_category)
+        td = link_to 'Destroy', cms_category, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Category', new_cms_category_path
