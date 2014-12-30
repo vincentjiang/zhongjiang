@@ -1,6 +1,10 @@
-p#notice = notice
+p
+  strong 名称：
+  = @category.name
+p
+  strong 上级分类：
+  = @category.category.name if @category.category.present?
 
-
-= link_to 'Edit', edit_cms_category_path(@cms_category)
+= link_to '修改', edit_cms_category_path(@category)
 '|
-= link_to 'Back', cms_categories_path
+= link_to '返回分类列表', cms_categories_path

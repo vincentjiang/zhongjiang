@@ -1,19 +1,22 @@
-h1 Listing cms_categories
+h1 分类列表
 
-table
+table.table.table-hover.table-striped.table-condensed
   thead
     tr
-      th
-      th
-      th
+      th ID
+      th 名称
+      th 上级分类
+      th 动作
 
   tbody
-    - @cms_categories.each do |cms_category|
+    - @categories.each do |category|
       tr
-        td = link_to 'Show', cms_category
-        td = link_to 'Edit', edit_cms_category_path(cms_category)
-        td = link_to 'Destroy', cms_category, data: {:confirm => 'Are you sure?'}, :method => :delete
+        td = category.id
+        td = category.name
+        td = category.category.name if category.category.present? 
+        td
+          = link_to '详细', [:cms, category], class: "btn btn-success btn-xs"
+          = link_to '修改', edit_cms_category_path(category), class: "btn btn-info btn-xs"
+          = link_to '删除', [:cms, category], data: {:confirm => '确认删除吗？'}, :method => :delete, class: "btn btn-danger btn-xs"
 
-br
-
-= link_to 'New Category', new_cms_category_path
+= link_to '新建分类', new_cms_category_path, class: "btn btn-primary"

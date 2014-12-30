@@ -1,5 +1,4 @@
-class Cms::PagesController < ApplicationController
-  layout 'cms'
+class Cms::PagesController < CmsController
 
   def index
   end

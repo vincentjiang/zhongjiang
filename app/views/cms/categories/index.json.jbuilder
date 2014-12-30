@@ -1,4 +1,4 @@
-json.array!(@cms_categories) do |cms_category|
-  json.extract! cms_category, :id
-  json.url cms_category_url(cms_category, format: :json)
+json.array!(@categories) do |category|
+  json.extract! category, :id
+  json.url cms_category_url(category, format: :json)
 end
