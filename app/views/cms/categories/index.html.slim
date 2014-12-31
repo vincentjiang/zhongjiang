@@ -1,4 +1,6 @@
-h1 分类列表
+h1
+  | 分类列表
+  = link_to '新建分类', new_cms_category_path, class: "btn btn-primary pull-right"
 
 table.table.table-hover.table-striped.table-condensed
   thead
@@ -15,8 +17,8 @@ table.table.table-hover.table-striped.table-condensed
         td = category.name
         td = category.category.name if category.category.present? 
         td
-          = link_to '详细', [:cms, category], class: "btn btn-success btn-xs"
           = link_to '修改', edit_cms_category_path(category), class: "btn btn-info btn-xs"
+          | &nbsp;
           = link_to '删除', [:cms, category], data: {:confirm => '确认删除吗？'}, :method => :delete, class: "btn btn-danger btn-xs"
-
-= link_to '新建分类', new_cms_category_path, class: "btn btn-primary"
+.text-center
+  = paginate @categories

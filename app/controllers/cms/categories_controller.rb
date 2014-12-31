@@ -1,11 +1,8 @@
 class Cms::CategoriesController < CmsController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [:edit, :update, :destroy]
 
   def index
-    @categories = Category.all
-  end
-
-  def show
+    @categories = Category.all.page(params[:page]).per(25)
   end
 
   def new
@@ -18,38 +15,29 @@ class Cms::CategoriesController < CmsController
   def create
     @category = Category.new(category_params)
 
-    respond_to do |format|
-      if @category.save
-        format.html { redirect_to [:cms, @category], notice: '新建分类成功' }
-        format.json { render :show, status: :created, location: [:cms, @category] }
-      else
-        format.html { render :new }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
+    if @category.save
+      redirect_to cms_categories_url, notice: '新建分类成功'
+    else
+      flash.now[:error] = @category.errors.full_messages.join(" ")
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @category.update(category_params)
-        format.html { redirect_to [:cms, @category], notice: '修改分类成功' }
-        format.json { render :show, status: :ok, location: [:cms, @category] }
-      else
-        format.html { render :edit }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
+    if @category.update(category_params)
+      redirect_to cms_categories_url, notice: '修改分类成功'
+    else
+      flash.now[:error] = @category.errors.full_messages.join(" ")
+      render :edit
     end
   end
 
   def destroy
-    respond_to do |format|
-      if @category.categories.empty?
-        @category.destroy
-        format.html { redirect_to cms_categories_url, notice: '删除分类成功' }
-        format.json { head :no_content }
-      else
-        format.html { redirect_to cms_categories_url, notice: "此分类拥有子分类，不能被删除"}
-      end
+    if @category.categories.empty?
+      @category.destroy
+      redirect_to cms_categories_url, notice: '删除分类成功'
+    else
+      redirect_to cms_categories_url, notice: "此分类拥有子分类，不能被删除"
     end
   end
 

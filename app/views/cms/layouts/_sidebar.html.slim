@@ -12,9 +12,3 @@ ul.list-unstyled
     = link_to "分类管理", cms_categories_path
   li.item-l1
     = link_to "网站管理", cms_index_path
-
-= content_for :javascript_bottom do
-  coffee:
-    $('.item-l1').click ->
-      $(this).children('ul').toggleClass('hidden')
-      return false

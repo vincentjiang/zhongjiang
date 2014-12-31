@@ -9,6 +9,7 @@ gem 'rolify'
 gem 'cancancan', '~> 1.9'
 gem 'bcrypt', '~> 3.1.7'
 gem "figaro"
+gem 'kaminari'  #分页
 # gem "tabs_on_rails"
 
 # 前端
