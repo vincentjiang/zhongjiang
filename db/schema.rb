@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141229164504) do
+ActiveRecord::Schema.define(version: 20141231183756) do
 
   create_table "zj_categories", force: :cascade do |t|
     t.string   "name",        limit: 255, null: false
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 20141229164504) do
   end
 
   add_index "zj_categories", ["category_id"], name: "index_zj_categories_on_category_id", using: :btree
+
+  create_table "zj_users", force: :cascade do |t|
+    t.string   "name",            limit: 255,                 null: false
+    t.string   "email",           limit: 255
+    t.string   "password_digest", limit: 255,                 null: false
+    t.boolean  "admin",           limit: 1,   default: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
 
   add_foreign_key "zj_categories", "zj_categories", column: "category_id"
 end
