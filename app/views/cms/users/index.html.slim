@@ -1,0 +1,27 @@
+h1 Listing cms_users
+
+table
+  thead
+    tr
+      th Name
+      th Email
+      th Password
+      th Admin
+      th
+      th
+      th
+
+  tbody
+    - @cms_users.each do |cms_user|
+      tr
+        td = cms_user.name
+        td = cms_user.email
+        td = cms_user.password
+        td = cms_user.admin
+        td = link_to 'Show', cms_user
+        td = link_to 'Edit', edit_cms_user_path(cms_user)
+        td = link_to 'Destroy', cms_user, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New User', new_cms_user_path

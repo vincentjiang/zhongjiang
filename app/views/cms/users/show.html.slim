@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @cms_user.name
+p
+  strong Email:
+  = @cms_user.email
+p
+  strong Password:
+  = @cms_user.password
+p
+  strong Admin:
+  = @cms_user.admin
+
+= link_to 'Edit', edit_cms_user_path(@cms_user)
+'|
+= link_to 'Back', cms_users_path
