@@ -11,6 +11,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem "figaro"
 gem 'kaminari'  #分页
 # gem "tabs_on_rails"
+gem 'carrierwave' #图片上传
 
 # 前端
 gem 'bootstrap-sass', '~> 3.3.1'
