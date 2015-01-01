@@ -12,5 +12,19 @@
 !/log/.keep
 /tmp
 
+# # Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# # Ignore other unneeded files.
+database.yml
+doc/
+*.swp
+*~
+.project
+.DS_Store
+.idea
+.secret
+
 # Ignore application configuration
 /config/application.yml

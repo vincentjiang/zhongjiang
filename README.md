@@ -1,4 +1,4 @@
-## Web Site For KV Store
+# Web Site For KV Store
 
 ## Install
 * rake db:migrate
