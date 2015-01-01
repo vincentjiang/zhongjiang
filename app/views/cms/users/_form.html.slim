@@ -1,21 +1,24 @@
-= form_for @cms_user do |f|
-  - if @cms_user.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@cms_user.errors.count, "error")} prohibited this cms_user from being saved:"
-      ul
-        - @cms_user.errors.full_messages.each do |message|
-          li = message
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :password
-    = f.text_field :password
-  .field
-    = f.label :admin
-    = f.check_box :admin
-  .actions = f.submit
+= form_for [:cms, @user] do |f|
+  .form-group
+    = f.label :name, "用户名"
+    = f.text_field :name, class: "form-control", placeholder: "至少为5位字符，大小写字母或数字"
+  .form-group
+    = f.label :email, "邮箱地址"
+    = f.text_field :email, class: "form-control", placeholder: "yourname@example.com"
+  .form-group
+    = f.label :password, "密码"
+    = f.text_field :password, class: "form-control", placeholder: "至少为5位字符，大小写字母或数字"
+  .form-group
+    = f.label :password_confirmation, "确认密码"
+    = f.text_field :password_confirmation, class: "form-control", placeholder: "请再次输入密码"
+  .radio
+    label
+      = f.radio_button :admin, false
+      | 普通用户
+    | &nbsp;&nbsp;&nbsp;
+    label
+      = f.radio_button :admin, true
+      | 管理员
+  .form-group
+    = f.submit "确认", class: "btn btn-primary"
+    = link_to '返回用户列表', cms_users_path, class: "btn btn-link"

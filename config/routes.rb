@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   namespace :cms do
     root 'pages#index'
     get 'pages/index', as: 'index'
-    resources :categories
+    resources :categories, except: :show
+    resources :users, except: :show
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

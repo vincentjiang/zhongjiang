@@ -18,27 +18,35 @@ class Cms::CategoriesController < CmsController
     if @category.save
       redirect_to cms_categories_url, notice: '新建分类成功'
     else
-      flash.now[:error] = @category.errors.full_messages.join(" ")
+      flash.now[:error] = @category.errors.full_messages.to_sentence
       render :new
     end
   end
 
   def update
-    if @category.update(category_params)
-      redirect_to cms_categories_url, notice: '修改分类成功'
-    else
-      flash.now[:error] = @category.errors.full_messages.join(" ")
+    begin
+      @category.update(category_params)
+    rescue Exception => e
+      flash[:error] = e.message
       render :edit
+    else
+      if @category.errors.any?
+        flash[:error] = @category.errors.full_messages.to_sentence
+        render :edit
+      else
+        redirect_to cms_categories_url, notice: "修改分类成功"
+      end
     end
   end
 
   def destroy
-    if @category.categories.empty?
+    begin
       @category.destroy
-      redirect_to cms_categories_url, notice: '删除分类成功'
-    else
-      redirect_to cms_categories_url, notice: "此分类拥有子分类，不能被删除"
+      flash[:notice] = "删除分类成功"
+    rescue Exception => e
+      flash[:error] = e.message
     end
+    redirect_to cms_categories_url
   end
 
   private

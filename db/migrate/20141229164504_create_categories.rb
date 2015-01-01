@@ -6,6 +6,5 @@ class CreateCategories < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :zj_categories, :zj_categories, column: "category_id"
   end
 end

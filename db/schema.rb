@@ -31,5 +31,4 @@ ActiveRecord::Schema.define(version: 20141231183756) do
     t.datetime "updated_at",                                  null: false
   end
 
-  add_foreign_key "zj_categories", "zj_categories", column: "category_id"
 end
