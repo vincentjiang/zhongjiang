@@ -6,6 +6,7 @@
     = f.label :category_id, "上级分类"
     - prompt = "请选择分类" if @category.options.count > 0
     = f.select :category_id, @category.options, { prompt: prompt }, class: "form-control"
+  br
   .form-group
-    = f.submit "确认", class: "btn btn-primary"
+    = f.submit "确认", class: "btn btn-primary", data: { disable_with: "正在提交，请稍候" }
     = link_to '返回分类列表', cms_categories_path, class: "btn btn-link"

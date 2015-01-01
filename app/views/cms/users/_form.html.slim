@@ -1,16 +1,16 @@
 = form_for [:cms, @user] do |f|
+  h4.text-info
+    i.fa.fa-check-square-o
+    | &nbsp;
+    | 基本资料
+  .form-group
   .form-group
     = f.label :name, "用户名"
     = f.text_field :name, class: "form-control", placeholder: "至少为5位字符，大小写字母或数字"
   .form-group
     = f.label :email, "邮箱地址"
     = f.text_field :email, class: "form-control", placeholder: "yourname@example.com"
-  .form-group
-    = f.label :password, "密码"
-    = f.text_field :password, class: "form-control", placeholder: "至少为5位字符，大小写字母或数字"
-  .form-group
-    = f.label :password_confirmation, "确认密码"
-    = f.text_field :password_confirmation, class: "form-control", placeholder: "请再次输入密码"
+  label 请选择用户角色
   .radio
     label
       = f.radio_button :admin, false
@@ -19,6 +19,19 @@
     label
       = f.radio_button :admin, true
       | 管理员
+  - if action_name == "edit"
+    hr
+    h4.text-info
+      i.fa.fa-check-square-o
+      | &nbsp;
+      | 若需要更改密码，请输入新密码
   .form-group
-    = f.submit "确认", class: "btn btn-primary"
+    = f.label :password, "密码"
+    = f.password_field :password, class: "form-control", placeholder: "至少为5位字符，大小写字母或数字"
+  .form-group
+    = f.label :password_confirmation, "确认密码"
+    = f.password_field :password_confirmation, class: "form-control", placeholder: "请再次输入密码"
+  br
+  .form-group
+    = f.submit "确认", class: "btn btn-primary", data: { disable_with: "正在提交，请稍候" }
     = link_to '返回用户列表', cms_users_path, class: "btn btn-link"

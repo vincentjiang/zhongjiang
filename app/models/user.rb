@@ -2,9 +2,11 @@ class User < ActiveRecord::Base
   self.table_name = "zj_users"
   has_secure_password
 
-  validates :name, :password, presence: true
+  validates :name, presence: true
+  validates :password, presence: true, on: :create
   validates :name, uniqueness: true
-  validates :name, :password, length: { in: 5..20 }
+  validates :name, length: { in: 5..20 }
+  validates :password, length: { in: 5..20 }, on: :create
   validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: "格式不正确"  }
   after_destroy :at_least_one_user
   after_destroy :at_least_one_admin

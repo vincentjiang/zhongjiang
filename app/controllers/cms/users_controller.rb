@@ -25,7 +25,7 @@ class Cms::UsersController < CmsController
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: '修改用户成功'
+      redirect_to cms_users_url, notice: '修改用户成功'
     else
       flash.now[:error] = @user.errors.full_messages.to_sentence
       render :edit
