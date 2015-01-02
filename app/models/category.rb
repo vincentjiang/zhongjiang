@@ -9,6 +9,10 @@ class Category < ActiveRecord::Base
 
   after_destroy :can_not_destroy_parent
   before_update :can_not_belongs_to_children
+
+  def parent_name
+    category ? category.name : "顶层分类"
+  end
   
   def options
     Category.all.select{ |c| c != self && !self.categories.include?(c) }.map { |c| [c.name, c.id] }

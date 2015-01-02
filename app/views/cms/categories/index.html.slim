@@ -15,7 +15,7 @@ table.table.table-hover.table-striped.table-condensed
       tr
         td = category.id
         td = category.name
-        td = category.category.name if category.category.present? 
+        td = category.parent_name
         td
           = link_to '修改', edit_cms_category_path(category), class: "btn btn-info btn-xs"
           | &nbsp;
