@@ -4,7 +4,6 @@
     = f.text_field :name, class: "form-control"
   .form-group
     = f.label :category_id, "上级分类"
-    - prompt = "请选择分类" if @category.options.count > 0
     = f.select :category_id, @category.options, { prompt: prompt }, class: "form-control"
   br
   .form-group

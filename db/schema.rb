@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150101154347) do
+ActiveRecord::Schema.define(version: 20150102032322) do
 
   create_table "images", force: :cascade do |t|
     t.integer  "product_id", limit: 4, null: false
@@ -20,14 +20,6 @@ ActiveRecord::Schema.define(version: 20150101154347) do
   end
 
   add_index "images", ["product_id"], name: "index_images_on_product_id", using: :btree
-
-  create_table "products", force: :cascade do |t|
-    t.string   "title",      limit: 255,   null: false
-    t.text     "desc",       limit: 65535
-    t.string   "author",     limit: 255
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
 
   create_table "zj_categories", force: :cascade do |t|
     t.string   "name",        limit: 255, null: false
@@ -38,6 +30,15 @@ ActiveRecord::Schema.define(version: 20150101154347) do
 
   add_index "zj_categories", ["category_id"], name: "index_zj_categories_on_category_id", using: :btree
 
+  create_table "zj_products", force: :cascade do |t|
+    t.string   "title",      limit: 255,   null: false
+    t.text     "desc",       limit: 65535
+    t.string   "author",     limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.text     "long_desc",  limit: 65535
+  end
+
   create_table "zj_users", force: :cascade do |t|
     t.string   "name",            limit: 255,                 null: false
     t.string   "email",           limit: 255
@@ -47,5 +48,5 @@ ActiveRecord::Schema.define(version: 20150101154347) do
     t.datetime "updated_at",                                  null: false
   end
 
-  add_foreign_key "images", "products"
+  add_foreign_key "images", "zj_products", column: "product_id"
 end

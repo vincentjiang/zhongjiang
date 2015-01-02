@@ -1,0 +1,27 @@
+h1 Listing cms_products
+
+table
+  thead
+    tr
+      th Title
+      th Author
+      th Desc
+      th Long desc
+      th
+      th
+      th
+
+  tbody
+    - @cms_products.each do |cms_product|
+      tr
+        td = cms_product.title
+        td = cms_product.author
+        td = cms_product.desc
+        td = cms_product.long_desc
+        td = link_to 'Show', cms_product
+        td = link_to 'Edit', edit_cms_product_path(cms_product)
+        td = link_to 'Destroy', cms_product, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Product', new_cms_product_path

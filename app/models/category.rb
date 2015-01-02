@@ -11,7 +11,7 @@ class Category < ActiveRecord::Base
   before_update :can_not_belongs_to_children
   
   def options
-    Category.all.select{ |c| c != self }.map { |c| [c.name, c.id] }
+    Category.all.select{ |c| c != self && !self.categories.include?(c) }.map { |c| [c.name, c.id] }
   end
 
   private

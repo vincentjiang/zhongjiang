@@ -1,0 +1,21 @@
+= form_for @cms_product do |f|
+  - if @cms_product.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@cms_product.errors.count, "error")} prohibited this cms_product from being saved:"
+      ul
+        - @cms_product.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :author
+    = f.text_field :author
+  .field
+    = f.label :desc
+    = f.text_area :desc
+  .field
+    = f.label :long_desc
+    = f.text_area :long_desc
+  .actions = f.submit
