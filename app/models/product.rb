@@ -4,5 +4,5 @@ class Product < ActiveRecord::Base
   belongs_to :category
   has_many :images, dependent: :destroy
 
-  validates :title, presence: true
+  validates :name, presence: true
 end

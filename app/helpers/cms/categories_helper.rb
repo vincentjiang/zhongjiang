@@ -1,10 +1,10 @@
 module Cms::CategoriesHelper
-  def select_tip
-    if @category.options.count.zero?
+  def select_options_tip
+    if @category.options.empty?
       "暂无任何分类"
-    elsif @category.options.count > 0
+    else
       "请选择上级分类"
     end
   end
-  
+ 
 end

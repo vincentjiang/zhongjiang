@@ -44,6 +44,6 @@ class Cms::ProductsController < CmsController
     end
 
     def product_params
-      params.require(:product).permit(:title, :author, :desc, :long_desc, :category_id)
+      params.require(:product).permit(:name, :author, :desc, :long_desc, :category_id)
     end
 end

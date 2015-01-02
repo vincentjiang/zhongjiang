@@ -1,11 +1,14 @@
 = form_for [:cms, @product] do |f|
   .row
     .col-lg-3
-      = f.label :title, "名称", class: "control-label"
-      = f.text_field :title, class: "form-control"
+      = f.label :name, "名称", class: "control-label"
+      = f.text_field :name, class: "form-control"
     .col-lg-3
       = f.label :category_id, "分类", class: "control-label"
       = f.select :category_id, Category.all.map{ |c| [c.name, c.id] }, { prompt: "请选择分类" }, class: "form-control"
+    - if Category.count.zero?
+      .col-lg-3
+        = link_to "新建分类", new_cms_category_path, class: "btn btn-link", style: "padding-top: 28px;"
   br
   .row
     .col-lg-12

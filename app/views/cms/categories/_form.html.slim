@@ -4,7 +4,7 @@
     = f.text_field :name, class: "form-control"
   .form-group
     = f.label :category_id, "上级分类 (不选择则为顶层分类)"
-    = f.select :category_id, @category.options, { include_blank: select_tip }, class: "form-control"
+    = f.select :category_id, @category.options, { include_blank: select_options_tip }, class: "form-control"
   br
   .form-group
     = f.submit "确认", class: "btn btn-primary", data: { disable_with: "正在提交，请稍候" }
