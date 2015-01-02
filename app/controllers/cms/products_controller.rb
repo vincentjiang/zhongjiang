@@ -2,7 +2,11 @@ class Cms::ProductsController < CmsController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.page(params[:page]).per(25)
+    if params[:keyword]
+      @products = Product.search(params[:keyword]).page(params[:page]).per(25)
+    else
+      @products = Product.page(params[:page]).per(25)
+    end
   end
 
   def show
@@ -19,7 +23,7 @@ class Cms::ProductsController < CmsController
     @product = Product.new(product_params)
 
     if @product.save
-      redirect_to @product, notice: 'Product was successfully created.'
+      redirect_to cms_products_url, notice: 'Product was successfully created.'
     else
       render :new
     end
@@ -27,7 +31,7 @@ class Cms::ProductsController < CmsController
 
   def update
     if @product.update(product_params)
-      redirect_to @product, notice: 'Product was successfully updated.'
+      redirect_to  cms_products_url, notice: 'Product was successfully updated.'
     else
       render :edit
     end
@@ -35,7 +39,7 @@ class Cms::ProductsController < CmsController
 
   def destroy
     @product.destroy
-    redirect_to products_url, notice: 'Product was successfully destroyed.'
+    redirect_to cms_products_url, notice: 'Product was successfully destroyed.'
   end
 
   private

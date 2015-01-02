@@ -8,6 +8,9 @@
         span.icon-bar
       = link_to ENV["COMPANY_NAME"], cms_index_path, class: "navbar-brand"
     .navbar-collapse.collapse
+      = form_tag cms_products_path, method: :get, class: "navbar-form navbar-left search-form" do
+        .form-group
+          input.form-control name="keyword" type="text" placeholder="搜索产品"
       ul.nav.navbar-nav.navbar-right
         li
           a UserName

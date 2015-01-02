@@ -4,5 +4,14 @@ class Product < ActiveRecord::Base
   belongs_to :category
   has_many :images, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, :category_id, presence: true
+
+  def self.search(keyword)
+    if keyword
+      where("name like ?", "%#{keyword}%")
+    else
+      all
+    end
+  end
+
 end

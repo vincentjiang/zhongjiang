@@ -72,6 +72,10 @@ body#cms-body {
   form {
     padding: 20px 0;
   }
+  .search-form {
+    padding: 0 !important;
+    margin-left: 10px;
+  }
 
   /*
    * cms login form
