@@ -2,7 +2,7 @@ class Cms::ProductsController < CmsController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.all
+    @products = Product.page(params[:page]).per(25)
   end
 
   def show
