@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get 'pages/index', as: 'index'
     resources :categories, except: :show
     resources :users, except: :show
+    resources :products
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

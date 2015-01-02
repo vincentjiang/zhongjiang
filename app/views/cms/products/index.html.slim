@@ -1,27 +1,24 @@
-h1 Listing cms_products
+h1
+  | 分类列表
+  = link_to '新建分类', new_cms_category_path, class: "btn btn-primary pull-right"
 
-table
+table.table.table-hover.table-striped.table-condensed
   thead
     tr
-      th Title
-      th Author
-      th Desc
-      th Long desc
-      th
-      th
-      th
+      th ID
+      th 名称
+      th 上级分类
+      th 动作
 
   tbody
-    - @cms_products.each do |cms_product|
+    - @categories.each do |category|
       tr
-        td = cms_product.title
-        td = cms_product.author
-        td = cms_product.desc
-        td = cms_product.long_desc
-        td = link_to 'Show', cms_product
-        td = link_to 'Edit', edit_cms_product_path(cms_product)
-        td = link_to 'Destroy', cms_product, data: {:confirm => 'Are you sure?'}, :method => :delete
-
-br
-
-= link_to 'New Product', new_cms_product_path
+        td = category.id
+        td = category.name
+        td = category.category.name if category.category.present? 
+        td
+          = link_to '修改', edit_cms_category_path(category), class: "btn btn-info btn-xs"
+          | &nbsp;
+          = link_to '删除', [:cms, category], data: {:confirm => '确认删除吗？'}, :method => :delete, class: "btn btn-danger btn-xs"
+.text-center
+  = paginate @categories
