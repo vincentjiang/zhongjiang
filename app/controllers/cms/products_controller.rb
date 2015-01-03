@@ -23,7 +23,7 @@ class Cms::ProductsController < CmsController
     @product = Product.new(product_params)
 
     if @product.save
-      redirect_to cms_products_url, notice: 'Product was successfully created.'
+      redirect_to cms_products_url, notice: '创建产品成功'
     else
       render :new
     end
@@ -31,7 +31,7 @@ class Cms::ProductsController < CmsController
 
   def update
     if @product.update(product_params)
-      redirect_to  cms_products_url, notice: 'Product was successfully updated.'
+      redirect_to  cms_products_url, notice: '修改产品成功'
     else
       render :edit
     end
@@ -39,7 +39,7 @@ class Cms::ProductsController < CmsController
 
   def destroy
     @product.destroy
-    redirect_to cms_products_url, notice: 'Product was successfully destroyed.'
+    redirect_to cms_products_url, notice: '删除产品成功'
   end
 
   private
@@ -48,6 +48,6 @@ class Cms::ProductsController < CmsController
     end
 
     def product_params
-      params.require(:product).permit(:name, :author, :desc, :long_desc, :image, :category_id)
+      params.require(:product).permit(:name, :author, :desc, :long_desc, :category_id)
     end
 end

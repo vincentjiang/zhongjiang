@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150103051527) do
+ActiveRecord::Schema.define(version: 20150103161254) do
 
   create_table "zj_categories", force: :cascade do |t|
     t.string   "name",        limit: 255,             null: false
@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 20150103051527) do
     t.datetime "updated_at",                null: false
     t.text     "long_desc",   limit: 65535
     t.integer  "category_id", limit: 4,     null: false
-    t.string   "image",       limit: 255
   end
 
   create_table "zj_users", force: :cascade do |t|
