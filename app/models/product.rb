@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   self.table_name = "zj_products"
+  mount_uploader :image, ImageUploader
 
   belongs_to :category
   has_many :images, dependent: :destroy
