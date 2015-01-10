@@ -21,6 +21,12 @@
       = f.text_area :long_desc, rows: 10, class: "form-control"
 
   br
+  .row
+    .col-lg-2
+      = f.fields_for :images do |i|
+        = i.file_field :image_path
+
+  br
   .form-group
     = f.submit "确认", class: "btn btn-primary", data: { disable_with: "正在提交，请稍候" }
     = link_to '返回分类列表', cms_products_path, class: "btn btn-link"
